@@ -8,22 +8,26 @@
         </div>
         <div class="col-9 pt-5 pl-10">
             <div class="d-flex justify-content-between align-items-baseline"><h1>{{ $user->username }}</h1>
-            <a href="#">Add New Post</a></div>
+            <a href="/p/create">Add New Post</a></div>
             <div class="d-flex">
-                <div class="pr-5"><strong>22</strong>posts</div>
+                <div class="pr-5"><strong>{{ $user->posts->count() }}</strong>posts</div>
                 <div class="pr-5"><strong>1k</strong>followers</div>
                 <div class="pr-5"><strong>369</strong>following</div>
             </div>
-            <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
-            <div>{{ $user->profile->description }}</div>
-            <div><a href="#">{{ $user->profile->url }}</a></div>
+            <div class="pt-4 font-weight-bold">username</div>
+            <div>description</div>
+            <div><a href="#">url</a></div>
         </div>
     </div>
 
     <div class="row pt-5">
-        <div class="col-4"><img src="https://rukminim1.flixcart.com/image/832/832/jd7p18w0/poster/h/9/p/medium-gigi-hadid-models-hd-wall-poster-celeb1421-original-imaek7e8nryhneb3.jpeg?q=70" class="w-100"></div>
-        <div class="col-4"><img src="https://rukminim1.flixcart.com/image/832/832/jd7p18w0/poster/h/9/p/medium-gigi-hadid-models-hd-wall-poster-celeb1421-original-imaek7e8nryhneb3.jpeg?q=70" class="w-100"></div>
-        <div class="col-4"><img src="https://rukminim1.flixcart.com/image/832/832/jd7p18w0/poster/h/9/p/medium-gigi-hadid-models-hd-wall-poster-celeb1421-original-imaek7e8nryhneb3.jpeg?q=70" class="w-100"></div>
+        @foreach($user->posts as $post)
+            <div class="col-4 pt-4">
+                <a href="/p/{{$post->id}}">
+                     <img src="/storage/{{ $post->image }}" class="w-100">
+                </a>
+            </div>
+        @endforeach
     </div>
 
 </div>
