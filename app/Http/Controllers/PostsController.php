@@ -14,7 +14,7 @@ class PostsController extends Controller
     }
 
     public function create(){
-        return view('posts.create');
+        return view('Posts.create');
     }
 
     public function store(){
@@ -37,7 +37,7 @@ class PostsController extends Controller
 
     }
 
-    public function show($post){
-        dd($post);
+    public function show( \App\Post $post){
+        return view('Posts.show',compact('post'));
     }
 }
